@@ -11,7 +11,7 @@ import lightMareBg from '../assets/imgs/LightMareBg.png';
 export const projects = [
   ['AgriBilis', agriBilis, agriBilisBg, 'https://agribilis.vercel.app/', 'An online marketplace for fresh produce, local goods, and farm bundles.'],
   ['Blue Coral', blueCoral, blueCoralBg, 'https://bluecoralph.com/', 'A location-based platform for finding and connecting with nearby workers.'],
-  ['Kawit', kawit, kawitBg, '', 'Discover local spots, plan visits, and explore Kawit with an AI travel companion.'],
+  ['Kawit', kawit, kawitBg, 'https://kawit-tawny.vercel.app/', 'Discover local spots, plan visits, and explore Kawit with an AI travel companion.'],
   ['LightMare', lightMare, lightMareBg, 'https://lightmare.online/', 'A dreamy clothing storefront for everyday tees and expressive style.'],
 ];
 

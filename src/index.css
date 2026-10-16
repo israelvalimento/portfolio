@@ -254,12 +254,14 @@ html:has(dialog[open]) .custom-cursor-ring{visibility:hidden}
 /* Let the project grid grow as more projects are added. */
 @media(min-width:561px){.work .rotating-bento[class]{height:auto;grid-template-rows:none;grid-auto-rows:340px}}
 
-.work .rotating-bento .project-coming-soon{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;min-height:220px;text-align:center;background:#e4e9dc;color:#56644b;border:1px dashed #aebba0;filter:none}
-.work .project-coming-soon::after{display:none}
-.project-coming-soon-plus{font-size:48px;font-weight:300;color:#8c9d7b;line-height:1;margin-bottom:20px}
-.project-coming-soon h3{margin:0 0 10px;font-size:20px;font-weight:500;letter-spacing:-.035em}
-.project-coming-soon p{margin:0;font-size:12px;line-height:1.7;color:#728064}
 
 
 /* Keep the page flush at the top and bottom on larger screens. */
 @media(min-width:701px){main{padding-bottom:0}}
+
+.project-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:32px}
+.project-pagination button{display:grid;place-items:center;width:44px;height:44px;border:1px solid #d8dcd4;border-radius:10px;background:#f5f6f2;color:#62695c;font-size:13px}
+.project-pagination button[aria-current="page"]{background:#e0e6d8;color:#3e4937;border-color:#c6d0bb}
+.project-pagination button:hover:not(:disabled){border-color:#a8b49b}
+.project-pagination button:disabled{opacity:.35;cursor:default}
+@media(min-width:561px){.work .rotating-bento[class]:has(>.rotating-bento-box:only-child){grid-template-columns:1fr}}

@@ -18,49 +18,65 @@ const spotlightProjects = [
   ['SkySnap', skySnap, skySnapBg, 'https://skysnapph.vercel.app/', 'Explore the SkySnap web experience.'],
 ];
 
+const PAGE_SIZE = 4;
+// Lead with live projects that show a range of visual styles and business uses.
+const projectOrder = [2, 1, 0, 3, 8, 4, 6, 7, 5];
+const pageCount = Math.ceil(projectOrder.length / PAGE_SIZE);
+
 export default function Spotlight({ active, setActive }) {
-
-
+  const position = Math.max(0, projectOrder.indexOf(active));
+  const page = Math.floor(position / PAGE_SIZE);
+  const visibleIndices = projectOrder.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => {
-      if (!document.hidden) setActive((current) => (current + 1) % spotlightProjects.length);
+      if (document.hidden) return;
+      setActive((current) => {
+        const start = page * PAGE_SIZE;
+        const items = projectOrder.slice(start, start + PAGE_SIZE);
+        const clockwise = [0, 1, 3, 2]
+          .filter((position) => position < items.length)
+          .map((position) => items[position]);
+        const sequence = window.matchMedia('(max-width:560px)').matches ? items : clockwise;
+        return sequence[(sequence.indexOf(current) + 1) % sequence.length];
+      });
     }, ROTATION_DURATION_MS);
     return () => window.clearInterval(timer);
-  }, [active, setActive]);
+  }, [active, page, setActive]);
 
-  return <section className="work section-shell" id="work">
-    <div className="work-heading"><span className="eyebrow">FEATURED PROJECTS</span></div>
-    <h2 className="featured-projects-title">Projects.</h2>
-    <div className={`rotating-bento active-box-${active}`}>
-      {spotlightProjects.map(([title, image, background, url, description, status], index) => <article key={title} className={`rotating-bento-box ${active === index ? 'expanded' : ''} ${!image ? 'bento-placeholder' : ''}`} style={{ backgroundImage: background ? `url(${background})` : undefined }}>
-        {active === index && <span className="rotation-track" aria-hidden="true"><span key={active} className="rotation-progress" style={{ animationDuration: `${ROTATION_DURATION_MS}ms` }} /></span>}
-        <button className="bento-select" onClick={() => setActive(index)} aria-pressed={active === index} aria-label={`Enlarge ${title}`} />
-        <span className="bento-box-number">PROJECT / 0{index + 1}</span>
-        {image ? <img src={image} alt={`${title} project preview`} /> : <span className="placeholder-plus" aria-hidden="true">+</span>}
-        <div className="bento-box-label"><div className="bento-box-copy"><strong>{title}</strong>{status && <span className="project-status">{status}</span>}<p>{description}</p></div>{image && url && <a className="project-visit" href={url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${title} website (opens in a new tab)`}>Visit site ↗</a>}</div>
-      </article>)}
-      {spotlightProjects.length % 2 !== 0 && (
-        <article className="rotating-bento-box project-coming-soon">
-          <span className="project-coming-soon-plus" aria-hidden="true">+</span>
-          <h3>More projects coming soon.</h3>
-          <p>There’s always something new in the works.</p>
-        </article>
-      )}
-    </div>
-  </section>;
+  const changePage = (nextPage) => {
+    setActive(projectOrder[nextPage * PAGE_SIZE]);
+  };
+
+  return (
+    <section className="work section-shell" id="work">
+      <div className="work-heading"><span className="eyebrow">FEATURED PROJECTS</span></div>
+      <h2 className="featured-projects-title">Projects.</h2>
+      <div className={`rotating-bento active-box-${visibleIndices.indexOf(active)}`}>
+        {visibleIndices.map((index) => {
+          const [title, image, background, url, description, status] = spotlightProjects[index];
+          return (
+            <article key={title} className={`rotating-bento-box ${active === index ? 'expanded' : ''}`} style={{ backgroundImage: background ? `url(${background})` : undefined }}>
+              {active === index && <span className="rotation-track" aria-hidden="true"><span key={active} className="rotation-progress" style={{ animationDuration: `${ROTATION_DURATION_MS}ms` }} /></span>}
+              <button type="button" className="bento-select" onClick={() => setActive(index)} aria-pressed={active === index} aria-label={`Enlarge ${title}`} />
+              <span className="bento-box-number">PROJECT / {String(projectOrder.indexOf(index) + 1).padStart(2, '0')}</span>
+              <img src={image} alt={`${title} project preview`} />
+              <div className="bento-box-label">
+                <div className="bento-box-copy"><strong>{title}</strong>{status && <span className="project-status">{status}</span>}<p>{description}</p></div>
+                {url && <a className="project-visit" href={url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${title} website (opens in a new tab)`}>Visit site ↗</a>}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <nav className="project-pagination" aria-label="Project pages">
+        <button type="button" onClick={() => changePage(page - 1)} disabled={page === 0} aria-label="Previous project page">←</button>
+        {Array.from({ length: pageCount }, (_, index) => (
+          <button type="button" key={index} onClick={() => changePage(index)} aria-label={`Project page ${index + 1}`} aria-current={page === index ? 'page' : undefined}>{index + 1}</button>
+        ))}
+        <button type="button" onClick={() => changePage(page + 1)} disabled={page === pageCount - 1} aria-label="Next project page">→</button>
+      </nav>
+    </section>
+  );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

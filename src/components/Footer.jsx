@@ -15,7 +15,7 @@ export default function Footer() {
             <br />
             Let’s create something together.
           </p>
-          <a className="email-link" href="mailto:hello@example.com">
+          <a className="email-link" href="mailto:krisslazarte@gmail.com">
             Say hello <span>↗</span>
           </a>
         </div>
@@ -33,7 +33,7 @@ export default function Footer() {
             <br />
             Working everywhere
           </p>
-          <a href="mailto:hello@example.com">hello@example.com ↗</a>
+          <a href="mailto:krisslazarte@gmail.com">Email Me ↗</a>
           <p>● Open for collaborations</p>
         </div>
         <div>
@@ -57,8 +57,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© {currentYear} ICVAL. All rights reserved.</span>
-        <a href="#home">BACK TO TOP ↑</a>
+        <span>© {currentYear} pro-ject. All rights reserved.</span>
       </div>
     </footer>
   );

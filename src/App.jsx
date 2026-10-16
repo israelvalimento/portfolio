@@ -1,9 +1,10 @@
-﻿import Spotlight from "./components/Spotlight";
+import Spotlight from "./components/Spotlight";
 import { useRef, useState } from "react";
 import Navbar from "./components/Navbar";
 import Carousell from "./components/Carousell";
 import { projects } from "./components/projects";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 import CustomCursor from "./components/CustomCursor";
 
 // Replace null with an imported screenshot for each testimonial when available.
@@ -71,7 +72,6 @@ export default function App() {
       <section className="hero" id="home">
         <Navbar />
         <div className="hero-copy">
-          <span>INDEPENDENT DESIGNER & DEVELOPER</span>
           <h1>
             Ideas made
             <br />
@@ -110,6 +110,27 @@ export default function App() {
               <span className="service-icon">{icon}</span>
               <h3>{title}</h3>
               <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="why-project section-shell" aria-labelledby="why-project-title">
+        <div className="why-project-intro">
+          <span className="eyebrow">WHY CHOOSE PRO-JECT?</span>
+          <h2 id="why-project-title">Big ideas.<br />A practical starting point.</h2>
+          <p>You want something that looks professional, works for your customers, and makes sense for your budget. That’s where we start.</p>
+          <a className="why-project-link" href="#contact">Let’s talk about your idea ↗</a>
+        </div>
+        <div className="why-project-reasons">
+          {[
+            ["A budget you can plan around.", "We work out what matters most, agree on the scope and cost, and start with what you need. Build the essentials now, with room to grow later."],
+            ["One person. Clear answers.", "Talk directly to the person building your project. Ask questions, share feedback, and get updates in plain language so you know where things stand."],
+            ["Built around your business.", "Your project should do more than look good. From helping customers find you to making enquiries easier, every decision starts with what you need it to do."],
+            ["Start small. Move forward.", "You don’t need every feature on day one. We can focus on a useful first version, then plan improvements as your needs become clearer."],
+          ].map(([title, description], index) => (
+            <article className="why-project-reason" key={title}>
+              <span className="why-project-number" aria-hidden="true">0{index + 1}</span>
+              <div><h3>{title}</h3><p>{description}</p></div>
             </article>
           ))}
         </div>
@@ -173,10 +194,10 @@ export default function App() {
       </dialog>
       <section className="contact" id="contact">
         <span className="eyebrow">GOT A PROJECT IN MIND?</span>
-        <a className="connect-title" href="mailto:hello@example.com">
+        <a className="connect-title" href="mailto:krisslazarte@gmail.com">
           LET’S CONNECT ↗
         </a>
-        <a className="contact-circle" href="mailto:hello@example.com">
+        <a className="contact-circle" href="mailto:krisslazarte@gmail.com">
           MAKE IT
           <br />
           HAPPEN ↗
@@ -184,6 +205,7 @@ export default function App() {
         <span className="contact-note">GOOD THINGS START WITH A HELLO.</span>
       </section>
       <Footer />
+      <BackToTop />
     </main>
   );
 }

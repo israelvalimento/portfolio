@@ -9,10 +9,10 @@ import lightMareBg from '../assets/imgs/LightMareBg.png';
 
 // Add each project's live website URL as the fourth value.
 export const projects = [
-  ['AgriBilis', agriBilis, agriBilisBg, '', 'An online marketplace for fresh produce, local goods, and farm bundles.'],
-  ['Blue Coral', blueCoral, blueCoralBg, '', 'A location-based platform for finding and connecting with nearby workers.'],
+  ['AgriBilis', agriBilis, agriBilisBg, 'https://agribilis.vercel.app/', 'An online marketplace for fresh produce, local goods, and farm bundles.'],
+  ['Blue Coral', blueCoral, blueCoralBg, 'https://bluecoralph.com/', 'A location-based platform for finding and connecting with nearby workers.'],
   ['Kawit', kawit, kawitBg, '', 'Discover local spots, plan visits, and explore Kawit with an AI travel companion.'],
-  ['LightMare', lightMare, lightMareBg, '', 'A dreamy clothing storefront for everyday tees and expressive style.'],
+  ['LightMare', lightMare, lightMareBg, 'https://lightmare.online/', 'A dreamy clothing storefront for everyday tees and expressive style.'],
 ];
 
 

@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { projects } from './projects';
 import liteBox from '../assets/imgs/LiteBox.png';
 import cointainer from '../assets/imgs/Container.png';
@@ -6,8 +6,8 @@ import cointainer from '../assets/imgs/Container.png';
 const ROTATION_DURATION_MS = 5000;
 const spotlightProjects = [
   ...projects,
-  ['LiteBox', liteBox, null, '', 'A simple image hosting service for uploading images and sharing them with a link.'],
-  ['Cointainer', cointainer, null, '', 'A digital wallet interface for managing balances, transfers, and transactions.', 'Ongoing project'],
+  ['LiteBox', liteBox, null, 'https://liteboxph.vercel.app/', 'A simple image hosting service for uploading images and sharing them with a link.'],
+  ['Cointainer', cointainer, null, 'https://cointainer.vercel.app/login', 'A digital wallet interface for managing balances, transfers, and transactions.', 'Ongoing project'],
 ];
 
 export default function Spotlight({ active, setActive }) {
@@ -31,7 +31,7 @@ export default function Spotlight({ active, setActive }) {
         <button className="bento-select" onClick={() => setActive(index)} aria-pressed={active === index} aria-label={`Enlarge ${title}`} />
         <span className="bento-box-number">PROJECT / 0{index + 1}</span>
         {image ? <img src={image} alt={`${title} project preview`} /> : <span className="placeholder-plus" aria-hidden="true">+</span>}
-        <div className="bento-box-label"><div className="bento-box-copy"><strong>{title}</strong>{status && <span className="project-status">{status}</span>}<p>{description}</p></div>{image && !status && <a className="project-visit" href={url || "about:blank"} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${title} website (opens in a new tab)`}>Visit site ↗</a>}</div>
+        <div className="bento-box-label"><div className="bento-box-copy"><strong>{title}</strong>{status && <span className="project-status">{status}</span>}<p>{description}</p></div>{image && url && <a className="project-visit" href={url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${title} website (opens in a new tab)`}>Visit site ↗</a>}</div>
       </article>)}
     </div>
   </section>;

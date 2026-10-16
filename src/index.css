@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 main[style] { background-image: linear-gradient(120deg, #101910e8, #10191088), var(--selected-project-image); background-size: cover; background-position: center top; }
 main .hero { background-image: linear-gradient(120deg, #101910e8, #10191088), var(--selected-project-image); }
@@ -209,3 +209,44 @@ html:has(.testimonial-dialog[open]){scrollbar-gutter:stable}
 .custom-cursor-ring.is-interactive{width:48px;height:48px;background:#dce5ac22;border-color:#dce5ac}
 html:has(dialog[open]) .custom-cursor-ring{visibility:hidden}
 
+
+
+.navbar .brand-project{font-size:32px;letter-spacing:-1.8px;white-space:nowrap}
+@media(max-width:700px){.navbar:has(.brand-project){gap:16px}.navbar .brand-project{font-size:27px}.navbar:has(.brand-project) nav{gap:10px}}
+
+/* Consistent card edges across services, projects, and testimonials. */
+.services .service-card,
+.testimonials .testimonial-card{border:1px solid #24252214;border-radius:12px}
+.work .rotating-bento .rotating-bento-box{border:1px solid #ffffff30;border-radius:12px}
+
+/* Give the contact call to action a clearer visual presence. */
+.contact{min-height:640px;padding:104px 24px 120px;gap:16px}
+.contact .eyebrow{font-size:11px}
+.contact .connect-title{font-size:clamp(34px,7.5vw,96px);text-align:center;margin:24px 0 44px}
+.contact .contact-circle{width:112px;height:112px;font-size:12px;font-weight:600;letter-spacing:.04em;line-height:1.6;background:#dce5ac;color:#202b19;border:1px solid #dce5ac;transform:rotate(-8deg);transition:transform .25s ease,background .25s ease}
+.contact .contact-circle:hover{transform:rotate(0deg) scale(1.05);background:#eaf1cd}
+.contact .contact-note{font-size:9px}
+@media(max-width:700px){.contact{min-height:500px;padding:72px 20px 96px}.contact .connect-title{margin:20px 0 32px}.contact .contact-circle{width:96px;height:96px;font-size:11px}}
+
+.back-to-top{position:fixed;right:24px;bottom:24px;z-index:100;display:flex;align-items:center;gap:10px;min-height:48px;padding:12px 20px;border:1px solid #b8c68f;border-radius:999px;background:#dce5ac;color:#202b19;font-size:12px;font-weight:600;box-shadow:0 4px 20px #0003}
+.back-to-top>span{font-size:22px;line-height:1}
+.back-to-top:hover{background:#eaf1cd}
+@media(max-width:700px){.back-to-top{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));padding:12px 16px}}
+
+/* Keep service cards comfortably spaced as the layout narrows. */
+.services .service-grid{gap:18px}
+.services .service-card{padding:28px}
+@media(min-width:701px) and (max-width:1000px){.services .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.services .service-grid{grid-template-columns:1fr;gap:16px}.services .service-card{padding:26px;min-height:0}.services .service-icon{margin-bottom:24px}.services .service-card h3{font-size:14px}.services .service-card p{max-width:none;font-size:12px;line-height:1.8}}
+
+.why-project{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;background:#f5f7ef;border-top:1px solid #24252210}
+.why-project-intro h2{font-size:clamp(30px,3.5vw,44px);font-weight:500;letter-spacing:-.055em;line-height:1.12;margin:18px 0 22px}
+.why-project-intro>p{font-size:14px;line-height:1.8;color:#636c5c;max-width:360px;margin:0 0 28px}
+.why-project-link{display:inline-block;padding:12px 0;border-bottom:1px solid #8b9978;font-size:13px;font-weight:600;color:#3e5033}
+.why-project-reasons{display:flex;flex-direction:column;gap:26px}
+.why-project-reason{display:flex;gap:18px;padding-bottom:26px;border-bottom:1px solid #24252214}
+.why-project-reason:last-child{border-bottom:0;padding-bottom:0}
+.why-project-number{font-size:11px;color:#7c8a6c;padding-top:4px}
+.why-project-reason h3{font-size:17px;letter-spacing:-.025em;font-weight:600;margin:0 0 10px}
+.why-project-reason p{font-size:13px;line-height:1.8;color:#636c5c;margin:0}
+@media(max-width:700px){.why-project{grid-template-columns:1fr;gap:36px}.why-project-intro>p{max-width:none}.why-project-reason{gap:14px}}

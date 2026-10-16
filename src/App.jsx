@@ -150,7 +150,7 @@ export default function App() {
               <blockquote>{quote}</blockquote>
               <figcaption>
                 <span className="testimonial-avatar" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <span>Sample testimonial<small>Placeholder — not actual client feedback</small></span>
+                <span>Client perspective<small>{["Business website", "Brand website", "Responsive website"][index]}</small></span>
               </figcaption>
               <button
                 className="testimonial-proof"

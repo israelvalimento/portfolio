@@ -47,9 +47,12 @@ export default function Carousell({ active, setActive, onSelect }) {
           <clipPath id={curveId} clipPathUnits="objectBoundingBox">
             <path d="M0,.23 C.22,.23 .3,0 .5,0 S.78,.23 1,.23 L1,.77 C.78,.77 .7,1 .5,1 S.22,.77 0,.77 Z" />
           </clipPath>
+          <clipPath id={`${curveId}-mobile`} clipPathUnits="objectBoundingBox">
+            <path d="M0,.09 C.2,.09 .3,0 .5,0 S.8,.09 1,.09 L1,.91 C.8,.91 .7,1 .5,1 S.2,.91 0,.91 Z" />
+          </clipPath>
         </defs>
       </svg>
-      <div ref={stageRef} className="carousel-ribbon-stage" style={{ clipPath: `url(#${curveId})` }}>
+      <div ref={stageRef} className="carousel-ribbon-stage" style={{ "--carousel-curve": `url(#${curveId})`, "--carousel-curve-mobile": `url(#${curveId}-mobile)` }}>
         <div className="project-strip">
           {[0, 1, 2].map((copy) => (
             <div className="carousel-group" key={copy}>

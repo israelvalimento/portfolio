@@ -3,7 +3,7 @@
 .hero:has(.carousel){margin-inline:0;padding-inline:60px}
 .hero .carousel{margin-inline:-60px;padding-bottom:48px}
 .carousel-curve-definition{position:absolute;pointer-events:none}
-.carousel-ribbon-stage{position:relative;margin:18px 0;overflow:hidden;container-type:inline-size}
+.carousel-ribbon-stage{position:relative;margin:18px 0;overflow:hidden;container-type:inline-size;clip-path:var(--carousel-curve)}
 .carousel .project-strip{display:flex;align-items:stretch;gap:0;width:max-content;height:clamp(180px,25vw,300px);margin:0;background:transparent;animation:carousel-scroll 28s linear infinite}
 .carousel-group{display:flex;flex-shrink:0;min-width:calc(100cqw + 24px);gap:24px;padding-right:24px}
 .carousel .project-tile,.carousel .project-tile.active{flex:1 0 clamp(140px,20vw,240px);width:clamp(140px,20vw,240px);height:100%;min-width:0;border:0;padding:0;position:relative;background:transparent;overflow:hidden;transition:none}
@@ -14,5 +14,5 @@
 .carousel-ribbon-stage:has(.project-tile:focus-visible) .project-strip{animation-play-state:paused}
 @media(hover:hover) and (pointer:fine){.carousel-ribbon-stage:hover .project-strip{animation-play-state:paused}}
 @keyframes carousel-scroll{from{transform:translateX(-16.666667%)}to{transform:translateX(-50%)}}
-@media(max-width:700px){.hero:has(.carousel){padding-inline:32px}.hero .carousel{margin-inline:-32px;padding-bottom:32px}.carousel-ribbon-stage{margin:12px 0}.carousel .project-strip{height:190px}}
+@media(max-width:700px){.hero:has(.carousel){padding-inline:32px}.hero .carousel{margin-inline:-32px;padding-bottom:32px}.carousel-ribbon-stage{margin:12px 0;clip-path:var(--carousel-curve-mobile)}.carousel .project-strip{height:190px}}
 @media(prefers-reduced-motion:reduce){.carousel-ribbon-stage{overflow-x:auto}.carousel .project-strip{animation:none}}

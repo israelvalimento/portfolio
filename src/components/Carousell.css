@@ -11,7 +11,8 @@
 .carousel .project-tile.active img,.carousel .project-tile:hover img,.carousel .project-tile:focus-visible img{filter:brightness(1)}
 .carousel .project-tile:hover img{transform:scale(1.04)}
 .carousel .project-tile:focus-visible{outline:3px solid #dce5ac;outline-offset:-4px}
-.carousel-ribbon-stage:hover .project-strip,.carousel-ribbon-stage:focus-within .project-strip{animation-play-state:paused}
+.carousel-ribbon-stage:has(.project-tile:focus-visible) .project-strip{animation-play-state:paused}
+@media(hover:hover) and (pointer:fine){.carousel-ribbon-stage:hover .project-strip{animation-play-state:paused}}
 @keyframes carousel-scroll{from{transform:translateX(-16.666667%)}to{transform:translateX(-50%)}}
 @media(max-width:700px){.hero:has(.carousel){padding-inline:32px}.hero .carousel{margin-inline:-32px;padding-bottom:32px}.carousel-ribbon-stage{margin:12px 0}.carousel .project-strip{height:190px}}
 @media(prefers-reduced-motion:reduce){.carousel-ribbon-stage{overflow-x:auto}.carousel .project-strip{animation:none}}
